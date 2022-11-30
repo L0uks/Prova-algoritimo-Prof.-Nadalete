@@ -1,22 +1,28 @@
-sequen = 1
-cont = 0
-sequen2 = 1
-cont2 = 1
-pnum = 0
+ultimo_numero = 0
 
-for c in range(10):
-    c = c + 1
-    num = int(input('Digite um numero: '))
-    if c != 0:
-        if num > pnum:
-            cont += 1
-            if cont > sequen:
-                sequen = cont
-        elif num == pnum:
-            cont2 += 1
-            if cont2 > sequen2:
-               sequen2 = cont2
-        pnum = num
+maior_sequencia_consecutiva = 1
+quantidade_consecutiva_crescente = 1
 
-print('O tamanho da maior sequencia concecutiva é {}'.format(cont))
-print('O tamanho da maior sequencia constante é {} '.format(cont2))
+maior_sequencia_constante = 1
+quantidade_consecutiva_constante = 1
+
+for x in range(10):
+    n = int(input("Insira um número inteiro: "))
+    if x != 0:
+        if n == ultimo_numero + 1:
+            quantidade_consecutiva_crescente += 1
+            if maior_sequencia_consecutiva < quantidade_consecutiva_crescente:
+                maior_sequencia_consecutiva = quantidade_consecutiva_crescente
+        else:
+            quantidade_consecutiva_crescente = 1
+
+        if n == ultimo_numero:
+            quantidade_consecutiva_constante += 1
+            if maior_sequencia_constante < quantidade_consecutiva_constante:
+                maior_sequencia_constante = quantidade_consecutiva_constante
+        else:
+            quantidade_consecutiva_constante = 1
+    ultimo_numero = n
+
+print("O tamanho da maior sequência consecutiva de números em ordem crescente é: ", maior_sequencia_consecutiva)
+print("O tamanho da maior sequência consecutiva de números constantes é: ", maior_sequencia_constante)
